@@ -15,6 +15,7 @@ const products = [
     { name: 'Sorbet de Frambuesa', price: 4.75, image: 'ruta_a_imagen_frambuesa' }
 ];
 
+const cart = [];
 
 function renderProducts() {
     const productGrid = document.querySelector('.product-grid');
