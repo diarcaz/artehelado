@@ -7,13 +7,14 @@ const products = [
     { name: 'Helado de Chocolate', price: 6.00, image: 'ruta_a_imagen_chocolate' },
     { name: 'Helado de Fresa', price: 5.50, image: 'ruta_a_imagen_fresa' },
     { name: 'Helado de Pistacho', price: 6.50, image: 'ruta_a_imagen_pistacho' },
-    { name: 'Sorbet de Mango', price: 4.50, image: 'ruta_a_imagen_mango' },
-    { name: 'Sorbet de Limón', price: 4.00, image: 'ruta_a_imagen_limon' },
-    { name: 'Sorbet de Frambuesa', price: 4.75, image: 'ruta_a_imagen_frambuesa' },
     { name: 'Helado de Menta con Chispas de Chocolate', price: 5.75, image: 'ruta_a_imagen_menta' },
     { name: 'Helado de Cookies and Cream', price: 6.00, image: 'ruta_a_imagen_cookies' },
-    { name: 'Helado de Café', price: 5.50, image: 'ruta_a_imagen_cafe' }
+    { name: 'Helado de Café', price: 5.50, image: 'ruta_a_imagen_cafe' },
+    { name: 'Sorbet de Mango', price: 4.50, image: 'ruta_a_imagen_mango' },
+    { name: 'Sorbet de Limón', price: 4.00, image: 'ruta_a_imagen_limon' },
+    { name: 'Sorbet de Frambuesa', price: 4.75, image: 'ruta_a_imagen_frambuesa' }
 ];
+
 
 function renderProducts() {
     const productGrid = document.querySelector('.product-grid');
