@@ -5,7 +5,9 @@ import { ref, set, push } from 'firebase/database';
 const products = [
     { name: 'Helado de Vainilla', price: 5.00, image: 'ruta_a_imagen_vainilla' },
     { name: 'Helado de Chocolate', price: 6.00, image: 'ruta_a_imagen_chocolate' },
-    { name: 'Sorbet de Mango', price: 4.50, image: 'ruta_a_imagen_mango' }
+    { name: 'Sorbet de Mango', price: 4.50, image: 'ruta_a_imagen_mango' },
+    { name: 'Helado de Fresa', price: 5.50, image: 'ruta_a_imagen_fresa' },
+    { name: 'Helado de Pistacho', price: 6.50, image: 'ruta_a_imagen_pistacho' }
 ];
 
 const cart = [];
