@@ -18,3 +18,27 @@ nav a {
 main {
     padding: 20px;
 }
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.product-item {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 15px;
+    width: calc(33.333% - 30px);
+    box-sizing: border-box;
+}
+.product-item img {
+    max-width: 100%;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
