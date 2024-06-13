@@ -1,6 +1,6 @@
 import { auth, db } from './firebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { ref, set, push, onValue } from 'firebase/database';
+import { ref, set, push } from 'firebase/database';
 
 const products = [
     { name: 'Helado de Vainilla', price: 5.00, image: 'ruta_a_imagen_vainilla' },
@@ -62,7 +62,7 @@ window.generateTicket = function() {
     const totalElement = document.createElement('p');
     totalElement.innerHTML = `<strong>Total: $${total.toFixed(2)}</strong>`;
     ticketContainer.appendChild(totalElement);
-    
+
     // Guardar en la base de datos
     const userId = auth.currentUser ? auth.currentUser.uid : 'anonymous';
     const ticketRef = push(ref(db, 'tickets/' + userId));
@@ -116,4 +116,3 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
         alert('Error al iniciar sesión');
     }
 });
-
