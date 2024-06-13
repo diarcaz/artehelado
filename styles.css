@@ -1,55 +1,115 @@
+/* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
 }
+
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: #ff6347;
+    color: white;
     padding: 10px 0;
     text-align: center;
 }
-nav a {
-    margin: 0 15px;
-    color: #fff;
-    text-decoration: none;
+
+header h1 {
+    margin: 0;
 }
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
 main {
     padding: 20px;
+    max-width: 1200px;
+    margin: auto;
 }
+
+/* Catálogo de productos */
 .product-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
+
 .product-item {
-    background-color: #fff;
+    background-color: white;
     border: 1px solid #ccc;
     padding: 15px;
     width: calc(33.333% - 30px);
     box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
+
 .product-item img {
     max-width: 100%;
+    height: auto;
+    border-radius: 10px;
 }
+
+.product-item h3 {
+    margin: 15px 0 10px;
+}
+
+.product-item p {
+    margin: 5px 0;
+}
+
+.product-item button {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.product-item button:hover {
+    background-color: #e55337;
+}
+
+/* Carrito de compras */
+.cart-container, .ticket-container {
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item button {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cart-item button:hover {
+    background-color: #e55337;
+}
+
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: #ff6347;
+    color: white;
     text-align: center;
     padding: 10px 0;
     position: fixed;
     width: 100%;
     bottom: 0;
-}
-.cart-container, .ticket-container {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-}
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 0;
 }
