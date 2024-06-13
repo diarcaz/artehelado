@@ -1,43 +1,57 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const cart = [];
+import { auth, db } from './firebaseConfig';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { ref, set, push } from 'firebase/database';
 
-    function renderCart() {
-        const cartContainer = document.getElementById('cart');
-        cartContainer.innerHTML = '';
-        cart.forEach((item, index) => {
-            const itemElement = document.createElement('div');
-            itemElement.className = 'cart-item';
-            itemElement.innerHTML = `
-                <p>${item.name} - $${item.price}</p>
-                <button onclick="removeFromCart(${index})">Eliminar</button>
-            `;
-            cartContainer.appendChild(itemElement);
+document.getElementById('register-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        await set(ref(db, 'users/' + user.uid), {
+            username: name,
+            email: email
         });
+        alert('Usuario registrado exitosamente');
+    } catch (error) {
+        console.error('Error al registrar usuario:', error);
+        alert('Error al registrar usuario');
     }
+});
 
-    window.addToCart = function(name, price) {
-        cart.push({ name, price });
-        renderCart();
-    };
+document.getElementById('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
 
-    window.removeFromCart = function(index) {
-        cart.splice(index, 1);
-        renderCart();
-    };
+    try {
+        await signInWithEmailAndPassword(auth, email, password);
+        alert('Inicio de sesión exitoso');
+    } catch (error) {
+        console.error('Error al iniciar sesión:', error);
+        alert('Error al iniciar sesión');
+    }
+});
 
-    window.generateTicket = function() {
-        const ticketContainer = document.getElementById('ticket');
-        ticketContainer.innerHTML = '<h2>Ticket</h2>';
-        cart.forEach(item => {
-            const itemElement = document.createElement('div');
-            itemElement.innerHTML = `<p>${item.name} - $${item.price}</p>`;
-            ticketContainer.appendChild(itemElement);
+async function saveCart(cartItems) {
+    try {
+        const userId = auth.currentUser.uid;
+        const cartRef = push(ref(db, 'carts/' + userId));
+        await set(cartRef, {
+            items: cartItems,
+            createdAt: new Date().toISOString()
         });
-        const total = cart.reduce((sum, item) => sum + item.price, 0);
-        const totalElement = document.createElement('p');
-        totalElement.innerHTML = `<strong>Total: $${total}</strong>`;
-        ticketContainer.appendChild(totalElement);
-    };
+        console.log('Carrito guardado con éxito');
+    } catch (error) {
+        console.error('Error al guardar carrito:', error);
+    }
+}
 
-    renderCart();
+document.getElementById('generate-ticket').addEventListener('click', () => {
+    const cartItems = getCartItems(); // Implementa esta función para obtener los items del carrito
+    saveCart(cartItems);
+    alert('Ticket generado');
 });
