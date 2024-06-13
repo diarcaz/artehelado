@@ -42,3 +42,14 @@ footer {
     width: 100%;
     bottom: 0;
 }
+.cart-container, .ticket-container {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
